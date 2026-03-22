@@ -5,7 +5,7 @@ class PropositionalLogic:
         self.statement = statement.strip()                # the question itself
         self.atomicVariables = self._setAtomicVariables() # representation of statement (p, q)
         self.variableCount = self._countVariable()        # atomic variable count
-        self.rowsCount = self._numberOfRows()             # number of rows
+        self.rowsCount = self._calculateRowsCount()       # number of rows
         self.binaryRows = self.generateBinaryRows()       # generate bits
 
     """
@@ -26,8 +26,16 @@ class PropositionalLogic:
     """
     STEP 2 : DETERMINE THE NUMBER OF ROWS
     """
+<<<<<<< HEAD
 
+=======
+<<<<<<< Updated upstream
+>>>>>>> a85ab6f (diverged conflict)
     def _numberOfRows(self): 
+=======
+
+    def _calculateRowsCount(self): 
+>>>>>>> Stashed changes
         return 2 ** self.variableCount
 
     """
@@ -47,9 +55,8 @@ class PropositionalLogic:
         # [['0', '0'], ['0', '1'], ['1', '0'], ['1', '1']]
         for binary in binaryStrings:
             rowValues = []
-            for index in range(self.variableCount):
-                bit = binary[index]
-                rowValues.append(bit)    
+            for bits in binary:
+                rowValues.append(bits)    
             binaryRows.append(rowValues)
 
         return binaryRows
@@ -71,10 +78,17 @@ class PropositionalLogic:
                 temp[atomicVariables[i]] = (columnValues[row][i])
             changedVariables.append(temp)
 
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+        return changedVariables
+=======
+>>>>>>> a85ab6f (diverged conflict)
         return changedVariables # returns a list of dictionary
     
     def _convertExpression(self, rowDict, statement) -> str:
         # Step 4.1 : Replace each variable with its value 
+<<<<<<< HEAD
         # convert atomic variables(p, q) into binary
         translationTable = str.maketrans(rowDict)
         replacedText = statement.translate(translationTable)
@@ -82,6 +96,16 @@ class PropositionalLogic:
         # Step 4.2 : replace logical operators  
         # convert logical operators into python equivalence
         logicalOperators = {'^': 'and', 'v': 'or', '~': 'not'}
+=======
+        # convert atomic variables(p, q) into bits (0, 1)
+        replacedText = statement
+        for atomicVariable, bits in rowDict.items():
+            replacedText = replacedText.replace(atomicVariable, bits)
+         
+        # Step 4.2 : replace logical operators  
+        # convert propositional logical symbols into python boolean syntax
+        logicalOperators = {'^': 'and', 'v': 'or', '~': 'not '}
+>>>>>>> a85ab6f (diverged conflict)
         for operator, equivalence in logicalOperators.items():
             replacedText = replacedText.replace(operator, equivalence)
         
@@ -101,6 +125,7 @@ class PropositionalLogic:
         # Step 4.4 : result is 0 or 1
         return evaluated # return list of evaluation
     
+<<<<<<< HEAD
     """
     STEP 5 : PRINT THE OUTPUTS
     """
@@ -137,11 +162,54 @@ class PropositionalLogic:
             sentenceLength = max(len(sentence), sentenceLength)
         print()
         
+=======
+    def _extractExpressions(self) -> list:
+        statement = self.statement
+        firstIndex = 0
+        subexpressions = []
+        extracted = ""
+
+        for i in range(len(statement)):
+            if statement[i] == '(':
+                firstIndex = i + 1
+                continue
+
+            if statement[i] == ')':
+                extracted = statement[firstIndex:i]
+                subexpressions.append(extracted)
+        
+        return subexpressions
+
+    def _evaluateExtractedExpressions(self) -> list:
+        bits = []        
+        for expression in self._extractExpressions():
+            bits.append(self.evaluateExpression(expression))
+
+        return bits
+
+    """
+    STEP 5 : PRINT THE OUTPUTS
+    """
+    def printTruthTable(self):
+        subexpressionLength = []
+        statementLength : int = len(self.statement)
+        extractedBits = self._evaluateExtractedExpressions()
+
+        # Header
+        for char in self.atomicVariables.strip():
+            print(f"{char:^3}", end="")
+        for sentence in self._extractExpressions():
+            print(f"({sentence})", end=" ")
+            subexpressionLength.append(len(sentence))
+        print(self.statement)
+
+>>>>>>> a85ab6f (diverged conflict)
         # Body
         for row in range(self.rowsCount):
             for byte in self.binaryRows[row]:
                 print(f"{byte:^3}", end="")
 
+<<<<<<< HEAD
             destructure = self.readThroughParenthesis()
             for chunk in destructure:
                 chunkEvaluate = [c for c in self.evaluateExpression(chunk)]
@@ -151,5 +219,18 @@ class PropositionalLogic:
         
         print()
     
+=======
+            count = 0 
+            for bits in extractedBits: 
+                print(f"{bits[row]:^{subexpressionLength[count]+3}}", end="")
+                count += 1
+
+            finalAnswer = self.evaluateExpression()
+            print(f"{finalAnswer[row]:^{statementLength+1}}")
+
+        print()
+    
+>>>>>>> Stashed changes
+>>>>>>> a85ab6f (diverged conflict)
 
 
