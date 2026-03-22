@@ -1,5 +1,12 @@
 class PropositionalLogic:
     OR_SYMBOL = 'v'
+    logicalOperators = {
+            '^': 'and', 
+            'v': 'or', 
+            '~': 'not ', 
+            '->': '<=',
+            '<>': '=='
+        }
 
     def __init__(self, statement: str):
         self.statement = statement.strip()                # the question itself
@@ -81,8 +88,7 @@ class PropositionalLogic:
          
         # Step 4.2 : replace logical operators  
         # convert propositional logical symbols into python boolean syntax
-        logicalOperators = {'^': 'and', 'v': 'or', '~': 'not '}
-        for operator, equivalence in logicalOperators.items():
+        for operator, equivalence in self.logicalOperators.items():
             replacedText = replacedText.replace(operator, equivalence)
         
         return replacedText # (p v q) convert into (0 or 1) 
@@ -135,20 +141,21 @@ class PropositionalLogic:
 
         # Header
         for char in self.atomicVariables.strip():
-            print(f"{char:^3}", end="")
+            print(f"{char:^3}", end="|")
         for sentence in self._extractExpressions():
-            print(f"({sentence})", end=" ")
+            print(f"({sentence})", end="|")
             subexpressionLength.append(len(sentence))
         print(self.statement)
 
         # Body
         for row in range(self.rowsCount):
             for byte in self.binaryRows[row]:
-                print(f"{byte:^3}", end="")
+                print(f"{byte:^3}", end="|")
             
             count = 0
             for bits in extractedBits: 
-                print(f"{bits[row]:^{subexpressionLength[count]+3}}", end="")
+                print(f"{bits[row]:^{subexpressionLength[count]+2}}", end="|")
+                
                 count += 1
 
             finalAnswer = self.evaluateExpression()
