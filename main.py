@@ -1,11 +1,21 @@
-from propositional_logic import PropositionalLogic
+from Game import Game
+from Colors import Colors
 
 def main():
-    logic = PropositionalLogic("~(~p v q) v (q ^ r)")
-    logic.printTruthTable()
-    logic1 = PropositionalLogic("(p <> q) ^ (q -> r) v (p v 0)")
-    logic1.printTruthTable()
-    logic3 = PropositionalLogic("(~p ^ 1) v 0")
-    logic3.printTruthTable()
+    statement = [
+            "(p v q) ^ (~q ^ r)", 
+            "(~q ^ ~p) -> (~p v q) v r",
+            "(~q ^ p) v r",
+            "(p ^ q) ^ r",
+            "~(q ^ p) v (q v r)",
+            "(p ^ q) v ~(q v r)",
+            "(q v p) ^ (~p v r)",
+            "(p -> q) ^ (q -> r)",
+            "(~q -> p) v ~r",
+            "(p ^ r) -> (~q v r)"]
+
+    g = Game()
+    print(g.run())
+
 if __name__ == "__main__":
     main()

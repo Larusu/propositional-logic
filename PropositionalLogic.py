@@ -105,8 +105,21 @@ class PropositionalLogic:
             evaluated.append(eval(self._convertExpression(var, statement)))
         
         # Step 4.4 : result is 0 or 1
-        return evaluated # return list of evaluation
+        return evaluated # return list of compound proposition
     
+    def evaluateClassification(self) -> str:
+        # Step 4.5 : Evaluate the classification of compound proposition
+        evaluated = self.evaluateExpression()
+        firstValue = evaluated[0]
+        for i in range(1, len(evaluated)):
+            if(firstValue != evaluated[i]):
+                return "Contingency"
+
+        if(firstValue == 0):
+            return "Contradiction"
+
+        return "Tautology"
+
     def _extractExpressions(self) -> list:
         statement = self.statement
         firstIndex = 0
@@ -132,38 +145,37 @@ class PropositionalLogic:
         return bits
 
     """
-    STEP 5 : PRINT THE OUTPUTS
+    STEP 5 : GET THE OUTPUT TO PASS SOMEWHERE
     """
-    def printTruthTable(self):
+    def getTruthTable(self) -> str:
+        truthTable = ""
         subexpressionLength = []
         statementLength : int = len(self.statement)
         extractedBits = self._evaluateExtractedExpressions()
 
         # Header
         for char in self.atomicVariables.strip():
-            print(f"{char:^3}", end="|")
+            truthTable += f"{char:^3}|"
         for sentence in self._extractExpressions():
-            print(f"({sentence})", end="|")
+            truthTable += f"({sentence})|"
             subexpressionLength.append(len(sentence))
-        print(self.statement)
+        truthTable += self.statement + '\n'
 
         # Body
         for row in range(self.rowsCount):
             for byte in self.binaryRows[row]:
-                print(f"{byte:^3}", end="|")
+                truthTable += f"{byte:^3}|"
             
             count = 0
             for bits in extractedBits: 
-                print(f"{bits[row]:^{subexpressionLength[count]+2}}", end="|")
+                truthTable += f"{bits[row]:^{subexpressionLength[count]+2}}|"
                 
                 count += 1
 
             finalAnswer = self.evaluateExpression()
-            print(f"{finalAnswer[row]:^{statementLength+1}}")
+            truthTable += f"{finalAnswer[row]:^{statementLength+1}}" + '\n'
 
-        print()
-    
-
+        return truthTable
 
 
 

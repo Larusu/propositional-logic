@@ -1,0 +1,439 @@
+[
+  {
+    "id": 1,
+    "declarativeStatement": "If it is raining and not sunny, then I am happy if and only if I am not sad.",
+    "logicalConnectives": "(p ^ ~q) -> (r <> ~s)",
+    "variables": {
+      "p": "it is raining",
+      "q": "it is sunny",
+      "r": "I am happy",
+      "s": "I am sad"
+    },
+    "difficulty": "medium"
+  },
+  {
+    "id": 2,
+    "declarativeStatement": "If the sun is shining and the wind is calm, then we will go sailing.",
+    "logicalConnectives": "(p ^ q) -> r",
+    "variables": {
+      "p": "The sun is shining",
+      "q": "The wind is calm",
+      "r": "We will go sailing"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 3,
+    "declarativeStatement": "If the server is running and the network is available, then the application is online and users can log in.",
+    "logicalConnectives": "(p ^ q) -> (r ^ s)",
+    "variables": {
+      "p": "the server is running",
+      "q": "the network is available",
+      "r": "the application is online",
+      "s": "users can log in"
+    },
+    "difficulty": "medium"
+  },
+  {
+    "id": 4,
+    "declarativeStatement": "It is not the case that both the light is on and the switch is off.",
+    "logicalConnectives": "~(p ^ ~q)",
+    "variables": {
+      "p": "the light is on",
+      "q": "the switch is on"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 5,
+    "declarativeStatement": "You will pass the exam if and only if you studied hard or you got lucky, but not neither.",
+    "logicalConnectives": "r <> (p v q)",
+    "variables": {
+      "p": "you studied hard",
+      "q": "you got lucky",
+      "r": "you will pass the exam"
+    },
+    "difficulty": "medium"
+  },
+  {
+    "id": 6,
+    "declarativeStatement": "If it is not cold and not windy, then we will go hiking or have a picnic.",
+    "logicalConnectives": "(~p ^ ~q) -> (r v s)",
+    "variables": {
+      "p": "it is cold",
+      "q": "it is windy",
+      "r": "we will go hiking",
+      "s": "we will have a picnic"
+    },
+    "difficulty": "hard"
+  },
+  {
+    "id": 7,
+    "declarativeStatement": "The car starts if and only if the battery is charged and there is fuel.",
+    "logicalConnectives": "p <> (q ^ r)",
+    "variables": {
+      "p": "the car starts",
+      "q": "the battery is charged",
+      "r": "there is fuel"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 8,
+    "declarativeStatement": "If the patient has a fever or a cough, then they should rest and drink fluids, and they should not go to work.",
+    "logicalConnectives": "(p v q) -> ((r ^ s) ^ ~t)",
+    "variables": {
+      "p": "the patient has a fever",
+      "q": "the patient has a cough",
+      "r": "the patient should rest",
+      "s": "the patient should drink fluids",
+      "t": "the patient should go to work"
+    },
+    "difficulty": "hard"
+  },
+  {
+    "id": 9,
+    "declarativeStatement": "Either the project is on time or the budget is not exceeded, but if the team is understaffed then the project is not on time.",
+    "logicalConnectives": "(p v ~q) ^ (r -> ~p)",
+    "variables": {
+      "p": "the project is on time",
+      "q": "the budget is exceeded",
+      "r": "the team is understaffed"
+    },
+    "difficulty": "medium"
+  },
+  {
+    "id": 10,
+    "declarativeStatement": "If you are a citizen and you are 18 or older, then you can vote; and you can vote if and only if you are registered.",
+    "logicalConnectives": "((p ^ q) -> r) ^ (r <> s)",
+    "variables": {
+      "p": "you are a citizen",
+      "q": "you are 18 or older",
+      "r": "you can vote",
+      "s": "you are registered"
+    },
+    "difficulty": "hard"
+  },
+  {
+    "id": 11,
+    "declarativeStatement": "The file will be deleted if and only if it is not read-only and the user has admin rights.",
+    "logicalConnectives": "p <> (~q ^ r)",
+    "variables": {
+      "p": "the file will be deleted",
+      "q": "the file is read-only",
+      "r": "the user has admin rights"
+    },
+    "difficulty": "medium"
+  },
+  {
+    "id": 12,
+    "declarativeStatement": "If it is neither day nor night, then the sky is not blue and not dark.",
+    "logicalConnectives": "(~p ^ ~q) -> (~r ^ ~s)",
+    "variables": {
+      "p": "it is day",
+      "q": "it is night",
+      "r": "the sky is blue",
+      "s": "the sky is dark"
+    },
+    "difficulty": "hard"
+  },
+  {
+    "id": 13,
+    "declarativeStatement": "If it is raining and not sunny, then I am happy if and only if I am not sad.",
+    "logicalConnectives": "(p ^ ~q) -> (r <> ~s)",
+    "variables": {
+      "p": "it is raining",
+      "q": "it is sunny",
+      "r": "I am happy",
+      "s": "I am sad"
+    },
+    "difficulty": "hard"
+  },
+  {
+    "id": 14,
+    "declarativeStatement": "If I study and I practice, then I will pass the test.",
+    "logicalConnectives": "(p ^ q) -> r",
+    "variables": {
+      "p": "I study",
+      "q": "I practice",
+      "r": "I will pass the test"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 15,
+    "declarativeStatement": "Either the lights are on or the room is bright.",
+    "logicalConnectives": "p v q",
+    "variables": {
+      "p": "the lights are on",
+      "q": "the room is bright"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 16,
+    "declarativeStatement": "If the alarm is ringing, then either there is a fire or the system is testing.",
+    "logicalConnectives": "p -> (q v r)",
+    "variables": {
+      "p": "the alarm is ringing",
+      "q": "there is a fire",
+      "r": "the system is testing"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 17,
+    "declarativeStatement": "I will go outside only if it is not raining and the wind is calm.",
+    "logicalConnectives": "p -> (~q ^ r)",
+    "variables": {
+      "p": "I will go outside",
+      "q": "it is raining",
+      "r": "the wind is calm"
+    },
+    "difficulty": "medium"
+  },
+  {
+    "id": 18,
+    "declarativeStatement": "The game starts if and only if all players are ready.",
+    "logicalConnectives": "p <> q",
+    "variables": {
+      "p": "the game starts",
+      "q": "all players are ready"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 19,
+    "declarativeStatement": "If the internet is working, then I can submit my assignment and join the meeting.",
+    "logicalConnectives": "p -> (q ^ r)",
+    "variables": {
+      "p": "the internet is working",
+      "q": "I can submit my assignment",
+      "r": "I can join the meeting"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 20,
+    "declarativeStatement": "Not both the door is locked and the key is inside the room.",
+    "logicalConnectives": "~(p ^ q)",
+    "variables": {
+      "p": "the door is locked",
+      "q": "the key is inside the room"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 21,
+    "declarativeStatement": "If the battery is low or the charger is broken, then the phone will not turn on.",
+    "logicalConnectives": "(p v q) -> ~r",
+    "variables": {
+      "p": "the battery is low",
+      "q": "the charger is broken",
+      "r": "the phone will turn on"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 22,
+    "declarativeStatement": "If the shop is open, then I buy bread or milk, but not both.",
+    "logicalConnectives": "p -> ((q v r) ^ ~(q ^ r))",
+    "variables": {
+      "p": "the shop is open",
+      "q": "I buy bread",
+      "r": "I buy milk"
+    },
+    "difficulty": "hard"
+  },
+  {
+    "id": 23,
+    "declarativeStatement": "If it is raining and not sunny, then I am happy if and only if I am not sad.",
+    "logicalConnectives": "(p ^ ~q) -> (r <> ~s)",
+    "variables": {
+      "p": "It is raining",
+      "q": "It is sunny",
+      "r": "I am happy",
+      "s": "I am sad"
+    },
+    "difficulty": "hard"
+  },
+  {
+    "id": 24,
+    "declarativeStatement": "Either the power is on and the light is functional, or the fuse is blown.",
+    "logicalConnectives": "(p ^ q) v r",
+    "variables": {
+      "p": "The power is on",
+      "q": "The light is functional",
+      "r": "The fuse is blown"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 25,
+    "declarativeStatement": "If you do not study and you fail the exam, then you will not graduate.",
+    "logicalConnectives": "(~p ^ q) -> ~r",
+    "variables": {
+      "p": "You study",
+      "q": "You fail the exam",
+      "r": "You will graduate"
+    },
+    "difficulty": "medium"
+  },
+  {
+    "id": 26,
+    "declarativeStatement": "The alarm sounds if and only if there is smoke or the test button is pressed.",
+    "logicalConnectives": "p <> (q v r)",
+    "variables": {
+      "p": "The alarm sounds",
+      "q": "There is smoke",
+      "r": "The test button is pressed"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 27,
+    "declarativeStatement": "If it is raining and not sunny, then I am happy if and only if I am at home or not sad.",
+    "logicalConnectives": "(p ^ ~q) -> (r <> (s v ~t))",
+    "variables": {
+      "p": "It is raining",
+      "q": "It is sunny",
+      "r": "I am happy",
+      "s": "I am at home",
+      "t": "I am sad"
+    },
+    "difficulty": "hard"
+  },
+  {
+    "id": 28,
+    "declarativeStatement": "If the coffee is hot and the morning is quiet, then I will read a book.",
+    "logicalConnectives": "(p ^ q) -> r",
+    "variables": {
+      "p": "The coffee is hot",
+      "q": "The morning is quiet",
+      "r": "I will read a book"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 29,
+    "declarativeStatement": "I will go to the party if and only if I finish my work and I am not too tired.",
+    "logicalConnectives": "p <> (q ^ ~r)",
+    "variables": {
+      "p": "I go to the party",
+      "q": "I finish my work",
+      "r": "I am too tired"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 30,
+    "declarativeStatement": "If it is not Monday or it is a holiday, then the office is closed.",
+    "logicalConnectives": "(~p v q) -> r",
+    "variables": {
+      "p": "It is Monday",
+      "q": "It is a holiday",
+      "r": "The office is closed"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 31,
+    "declarativeStatement": "If you have a ticket and a valid ID, then you can enter unless you are late.",
+    "logicalConnectives": "(p ^ q) -> (r ^ ~s)",
+    "variables": {
+      "p": "You have a ticket",
+      "q": "You have a valid ID",
+      "r": "You can enter",
+      "s": "You are late"
+    },
+    "difficulty": "hard"
+  },
+  {
+    "id": 32,
+    "declarativeStatement": "The light is on if and only if the switch is up and the bulb is not broken.",
+    "logicalConnectives": "p <> (q ^ ~r)",
+    "variables": {
+      "p": "The light is on",
+      "q": "The switch is up",
+      "r": "The bulb is broken"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 33,
+    "declarativeStatement": "If I study hard, then if the exam is fair, I will pass.",
+    "logicalConnectives": "p -> (q -> r)",
+    "variables": {
+      "p": "I study hard",
+      "q": "The exam is fair",
+      "r": "I will pass"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 34,
+    "declarativeStatement": "Either we eat pizza or we eat pasta, and if we eat pizza, we don't eat salad.",
+    "logicalConnectives": "(p v q) ^ (p -> ~r)",
+    "variables": {
+      "p": "We eat pizza",
+      "q": "We eat pasta",
+      "r": "We eat salad"
+    },
+    "difficulty": "medium"
+  },
+  {
+    "id": 35,
+    "declarativeStatement": "If the internet is down, then I cannot work and I will be frustrated.",
+    "logicalConnectives": "p -> (~q ^ r)",
+    "variables": {
+      "p": "The internet is down",
+      "q": "I can work",
+      "r": "I will be frustrated"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 36,
+    "declarativeStatement": "It is not the case that both the oven is on and the door is open.",
+    "logicalConnectives": "~(p ^ q)",
+    "variables": {
+      "p": "The oven is on",
+      "q": "The door is open"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 37,
+    "declarativeStatement": "I will pass the exam if and only if I study hard and do not sleep late.",
+    "logicalConnectives": "p -> (q ^ ~r)",
+    "variables": {
+      "p": "I will pass the exam",
+      "q": "I study hard",
+      "r": "I sleep late"
+    },
+    "difficulty": "easy"
+  },
+  {
+    "id": 38,
+    "declarativeStatement": "If today is raining and not sunny, then if and only if I am happy or not sad.",
+    "logicalConnectives": "(p ^ ~ q) <> (r -> ~s)",
+    "variables": {
+      "p": "Today is raining",
+      "q": "Today is sunny",
+      "r": "I am happy",
+      "s": "I am sad"
+    },
+    "difficulty": "hard"
+  },
+  {
+    "id": 39,
+    "declarativeStatement": "Either it is a holiday or it is a workday, and if it is a workday, then I must wake up early.",
+    "logicalConnectives": "(p ^ q) v (q -> r)",
+    "variables": {
+      "p": "It is a holiday",
+      "q": "It is a workday",
+      "r": "I must wake up early"
+    },
+    "difficulty": "medium"
+  }
+]
