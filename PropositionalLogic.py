@@ -3,9 +3,7 @@ class PropositionalLogic:
     logicalOperators = {
             '^': 'and', 
             'v': 'or', 
-            '~': 'not ', 
-            '->': '<=',
-            '<>': '=='
+            '~': 'not '
         }
 
     def __init__(self, statement: str):
@@ -78,20 +76,85 @@ class PropositionalLogic:
             changedVariables.append(temp)
 
         return changedVariables # returns a list of dictionary
+
+    # implies == conditional
+    def implies(self, p, q):
+        return not p or q
     
+    def biconditional(self, p, q):
+        return p == q
+    
+    def _findTopLevelOp(self, text, op):
+        """Return index of `op` at depth 0, or -1 if not found."""
+        depth = 0
+        for i in range(len(text) - len(op) + 1):
+            if text[i] == '(':
+                depth += 1
+            elif text[i] == ')':
+                depth -= 1
+            elif depth == 0 and text[i:i+len(op)] == op:
+                return i
+        return -1
+ 
+    def _transformOperators(self, text) -> str:
+        """
+        Recursively convert -> and <> to Python function calls,
+        respecting parenthesis nesting. Logical symbol replacement
+        (^, v, ~) is done AFTER this step so they don't interfere.
+        """
+        text = text.strip()
+ 
+        # Check for top-level <> first (lower precedence than ->)
+        idx = self._findTopLevelOp(text, '<>')
+        if idx != -1:
+            left  = self._transformOperators(text[:idx])
+            right = self._transformOperators(text[idx+2:])
+            return f"biconditional({left}, {right})"
+ 
+        # Check for top-level ->
+        idx = self._findTopLevelOp(text, '->')
+        if idx != -1:
+            left  = self._transformOperators(text[:idx])
+            right = self._transformOperators(text[idx+2:])
+            return f"implies({left}, {right})"
+ 
+        # No top-level connective — recurse into the innermost parentheses
+        # by rebuilding character by character
+        result = []
+        i = 0
+        while i < len(text):
+            if text[i] == '(':
+                # Find matching closing paren
+                depth = 1
+                j = i + 1
+                while j < len(text) and depth > 0:
+                    if text[j] == '(':
+                        depth += 1
+                    elif text[j] == ')':
+                        depth -= 1
+                    j += 1
+                inner = text[i+1:j-1]
+                result.append('(' + self._transformOperators(inner) + ')')
+                i = j
+            else:
+                result.append(text[i])
+                i += 1
+        return ''.join(result)
+
     def _convertExpression(self, rowDict, statement) -> str:
-        # Step 4.1 : Replace each variable with its value 
-        # convert atomic variables(p, q) into bits (0, 1)
-        replacedText = statement
-        for atomicVariable, bits in rowDict.items():
-            replacedText = replacedText.replace(atomicVariable, bits)
-         
-        # Step 4.2 : replace logical operators  
-        # convert propositional logical symbols into python boolean syntax
+        # 1. Replace atomic variables with bit values
+        expr = statement
+        for var, bit in rowDict.items():
+            expr = expr.replace(var, bit)
+ 
+        # 2. Handle -> and <> with parenthesis-aware transformer
+        expr = self._transformOperators(expr)
+ 
+        # 3. Now replace ^, v, ~ (safe to do here — no -> or <> left)
         for operator, equivalence in self.logicalOperators.items():
-            replacedText = replacedText.replace(operator, equivalence)
-        
-        return replacedText # (p v q) convert into (0 or 1) 
+            expr = expr.replace(operator, equivalence)
+ 
+        return expr
 
     def evaluateExpression(self, statement = None) -> list:
         statement = statement or self.statement
@@ -102,7 +165,9 @@ class PropositionalLogic:
         evaluated = [] 
         mappedVariables = self._mapVariablesToTruthValues()
         for var in mappedVariables:
-            evaluated.append(eval(self._convertExpression(var, statement)))
+            converted = self._convertExpression(var, statement)
+            result = eval(converted, {"implies": self.implies, "biconditional": self.biconditional})
+            evaluated.append(result)
         
         # Step 4.4 : result is 0 or 1
         return evaluated # return list of compound proposition

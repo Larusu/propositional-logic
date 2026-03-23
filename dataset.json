@@ -78,20 +78,7 @@
     },
     "difficulty": "easy"
   },
-  {
-    "id": 8,
-    "declarativeStatement": "If the patient has a fever or a cough, then they should rest and drink fluids, and they should not go to work.",
-    "logicalConnectives": "(p v q) -> ((r ^ s) ^ ~t)",
-    "variables": {
-      "p": "the patient has a fever",
-      "q": "the patient has a cough",
-      "r": "the patient should rest",
-      "s": "the patient should drink fluids",
-      "t": "the patient should go to work"
-    },
-    "difficulty": "hard"
-  },
-  {
+   {
     "id": 9,
     "declarativeStatement": "Either the project is on time or the budget is not exceeded, but if the team is understaffed then the project is not on time.",
     "logicalConnectives": "(p v ~q) ^ (r -> ~p)",
@@ -102,19 +89,7 @@
     },
     "difficulty": "medium"
   },
-  {
-    "id": 10,
-    "declarativeStatement": "If you are a citizen and you are 18 or older, then you can vote; and you can vote if and only if you are registered.",
-    "logicalConnectives": "((p ^ q) -> r) ^ (r <> s)",
-    "variables": {
-      "p": "you are a citizen",
-      "q": "you are 18 or older",
-      "r": "you can vote",
-      "s": "you are registered"
-    },
-    "difficulty": "hard"
-  },
-  {
+    {
     "id": 11,
     "declarativeStatement": "The file will be deleted if and only if it is not read-only and the user has admin rights.",
     "logicalConnectives": "p <> (~q ^ r)",
@@ -235,17 +210,6 @@
     "difficulty": "easy"
   },
   {
-    "id": 22,
-    "declarativeStatement": "If the shop is open, then I buy bread or milk, but not both.",
-    "logicalConnectives": "p -> ((q v r) ^ ~(q ^ r))",
-    "variables": {
-      "p": "the shop is open",
-      "q": "I buy bread",
-      "r": "I buy milk"
-    },
-    "difficulty": "hard"
-  },
-  {
     "id": 23,
     "declarativeStatement": "If it is raining and not sunny, then I am happy if and only if I am not sad.",
     "logicalConnectives": "(p ^ ~q) -> (r <> ~s)",
@@ -290,20 +254,7 @@
     },
     "difficulty": "easy"
   },
-  {
-    "id": 27,
-    "declarativeStatement": "If it is raining and not sunny, then I am happy if and only if I am at home or not sad.",
-    "logicalConnectives": "(p ^ ~q) -> (r <> (s v ~t))",
-    "variables": {
-      "p": "It is raining",
-      "q": "It is sunny",
-      "r": "I am happy",
-      "s": "I am at home",
-      "t": "I am sad"
-    },
-    "difficulty": "hard"
-  },
-  {
+    {
     "id": 28,
     "declarativeStatement": "If the coffee is hot and the morning is quiet, then I will read a book.",
     "logicalConnectives": "(p ^ q) -> r",

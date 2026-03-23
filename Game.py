@@ -18,7 +18,7 @@ class Game:
             print(self.color.error("dataset.json is corrupted. Closing program."))
             return
 
-        MAX_ROUND = 5
+        self.MAX_ROUND = 5
         self.ids = []
         self.score = 0
         self.gamemode = "statement"
@@ -42,7 +42,6 @@ class Game:
     def _startGame(self, currentRound : int):
         # get random id
         id = random.choice(self.ids)
-        print(f"id : {id}")
 
         # initializes variables and instantiate class
         statement, expression = self.json.getStatementAndLogic(id)
@@ -51,8 +50,11 @@ class Game:
         
         # to prevent crash when question is fewer than MAX_ROUNDS
         if currentRound == 0:
-            self.MAX_ROUND = self.MAX_ROUND if logic.getDataSizeByDifficulty(id) >= self.MAX_ROUND else logic.getDataSizeByDifficulty(id) 
-
+            print(f"sakjdaksjdkjakdj {currentRound}, maxround {self.MAX_ROUND}, size: {self.json.getDataSizeByDifficulty(id)}")
+            self.MAX_ROUND = min(
+                self.MAX_ROUND,
+                self.json.getDataSizeByDifficulty(self.difficulty)
+            )
         print(f"{currentRound + 1}. {self.color.bold(question)}")
 
         # user input
@@ -83,7 +85,7 @@ class Game:
         for char in truthTable:
             sys.stdout.write(char)
             sys.stdout.flush()
-            time.sleep(0.04)
+            time.sleep(0.02)
         print()
 
         # check if answer is correct or not
@@ -139,19 +141,18 @@ Direction:
         if(inputMode == 1):
             self.gamemode = "expression"
         
-        difficulty = ""
         if inputDifficulty == 1:
-            difficulty = "easy"
+            self.difficulty = "easy"
             self.point = 1 if self.gamemode == "expression" else 2 
         elif inputDifficulty == 2:
-            difficulty = "medium"
+            self.difficulty = "medium"
             self.point = 2 if self.gamemode == "expression" else 4
         elif inputDifficulty == 3:
-            difficulty = "hard"
+            self.difficulty = "hard"
             self.point = 3 if self.gamemode == "expression" else 6
 
         print("\n")
-        difficultyCount = self.json.getIdsByDifficulty(difficulty)
+        difficultyCount = self.json.getIdsByDifficulty(self.difficulty)
         for d in difficultyCount:
             self.ids.append(d)
 
