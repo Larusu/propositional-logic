@@ -50,7 +50,6 @@ class Game:
         
         # to prevent crash when question is fewer than MAX_ROUNDS
         if currentRound == 0:
-            print(f"sakjdaksjdkjakdj {currentRound}, maxround {self.MAX_ROUND}, size: {self.json.getDataSizeByDifficulty(id)}")
             self.MAX_ROUND = min(
                 self.MAX_ROUND,
                 self.json.getDataSizeByDifficulty(self.difficulty)
