@@ -3,8 +3,6 @@
 Final project for **Discrete Mathematics 2**. 
 This is a Python-based educational game that help students learn **propositional logic** through an interactive quiz format.
 
----
-
 ## 📘 What is Propositional Logic?
 
 Propositional logic is a branch of logic that deals with **propositions**—statements that can be either **true** or **false**. It uses logical connectives to combine simple propositions into compound propositions:
@@ -22,8 +20,6 @@ A compound proposition can be classified as:
 - **Contingency**: Can be either true or false (depends on truth values)
 
 This program generates **truth tables** to evaluate compound propositions and classify them accordingly.
-
----
 
 ## 🎮 Features
 
@@ -45,7 +41,15 @@ This program generates **truth tables** to evaluate compound propositions and cl
   - Contradiction  
   - Contingency  
 
----
+## 🧪 Example expressions
+
+Some example expressions used in game:
+
+- `(p ^ q) -> r`
+- `(p ^ q) -> (r ^ s)`
+- `~(p ^ ~q)`
+- `r <> (p v q)`
+- `(~p ^ ~q) -> (r v s)`
 
 ## ▶️ How to Run
 
@@ -55,8 +59,6 @@ python main.py
 
 ### 📦 Requirements
 - Python 3.6+
-
----
 
 ### 🎮 Game Controls
 1. Enter your name for the leaderboard
@@ -91,6 +93,6 @@ propositional-logic/
 ## 🚀 Future Improvements
 
 - 📂 Custom File Input
-    Allow users to load custom propositions from external files.
+    - Allow users to load custom propositions from external files.
 - ✅ Truth Value Validation
-    Add functionality to verify truth values by comparing them with generated truth tables.
+    - Add functionality to verify truth values by comparing them with generated truth tables.
