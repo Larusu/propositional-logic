@@ -53,8 +53,18 @@ Some example expressions used in game:
 
 ## ▶️ How to Run
 
+For Windows
+
 ```bash
+cd ./propositional-logic/
 python main.py
+```
+
+For Linux/MacOS
+
+```
+cd ./propositional-logic/
+python3 main.py
 ```
 
 ### 📦 Requirements
